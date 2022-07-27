@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace YourBeautyEstetica.MVC.Models
+namespace YB.Domain.Models
 {
     public abstract class BaseEntity
     {

@@ -23,4 +23,9 @@
     <Folder Include="Areas\Identity\Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\YB.CrossCutting\YB.CrossCutting.csproj" />
+    <ProjectReference Include="..\YB.Data\YB.Data.csproj" />
+  </ItemGroup>
+
 </Project>

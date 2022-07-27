@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\YB.Data\YB.Data.csproj" />
+    <ProjectReference Include="..\YB.Domain\YB.Domain.csproj" />
+    <ProjectReference Include="..\YB.Services\YB.Services.csproj" />
+  </ItemGroup>
+
+</Project>

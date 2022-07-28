@@ -4,7 +4,7 @@ using YB.Domain.Models;
 
 namespace YB.Data.Repository
 {
-    public class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected readonly YBContext _context;
 
@@ -13,31 +13,36 @@ namespace YB.Data.Repository
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public async Task<T> SelecionarPorId(Guid id)
+        public virtual async Task<T> SelecionarPorId(Guid id)
         {
-            return await _context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+            return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task<List<T>> SelecionarTudo()
+        public virtual async Task<List<T>> SelecionarTudo()
         {
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task Alterar(T entity)
+        public virtual async Task Alterar(T entity)
         {
             _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync();
+            await SaveChanges();
         }
 
-        public async Task Incluir(T entity)
+        public virtual async Task Incluir(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            await _context.SaveChangesAsync();
+            await SaveChanges();
         }
 
-        public async Task Dispose()
+        public async Task<int> SaveChanges()
         {
-            await _context.DisposeAsync();
+           return await _context.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            _context?.Dispose();
         }
     }
 }

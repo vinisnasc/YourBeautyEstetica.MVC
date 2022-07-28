@@ -30,7 +30,7 @@ namespace YB.CrossCutting.DependencyInjection
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
-            services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
+            //services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
             // UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();

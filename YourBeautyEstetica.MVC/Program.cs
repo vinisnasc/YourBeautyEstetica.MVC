@@ -16,6 +16,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Configuration.AddUserSecrets<Program>();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

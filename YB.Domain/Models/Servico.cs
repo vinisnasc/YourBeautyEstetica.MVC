@@ -6,6 +6,7 @@
         public Guid FuncionarioId { get; set; }
         public DateTime TempoNecessario { get; set; }
         public double Valor { get; set; }
+        public string Imagem { get; set; }
 
         public IEnumerable<Agendamento> Agendamentos { get; set; }
         public Funcionario Funcionario { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
 using YB.Domain.Interfaces.Repository;
 using YB.Domain.Models;
 
@@ -21,6 +22,11 @@ namespace YB.Data.Repository
         public virtual async Task<List<T>> SelecionarTudo()
         {
             return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> Buscar(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().AsNoTracking().Where(predicate).ToListAsync();
         }
 
         public virtual async Task Alterar(T entity)

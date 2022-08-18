@@ -1,0 +1,8 @@
+.submitted{behavior: url(js/PIE.htc); position:relative;}
+
+.menu ul {
+	behavior: url(js/PIE.htc);
+	box-shadow:0 0 0 1px #a99eac;
+}
+
+.es-carousel .selected a img{filter:alpha(opacity=60) !important;}

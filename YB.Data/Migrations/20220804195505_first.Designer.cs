@@ -12,7 +12,7 @@ using YB.Data;
 namespace YB.Data.Migrations
 {
     [DbContext(typeof(YBContext))]
-    [Migration("20220726235020_first")]
+    [Migration("20220804195505_first")]
     partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -80,6 +80,9 @@ namespace YB.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
@@ -105,6 +108,9 @@ namespace YB.Data.Migrations
 
                     b.Property<Guid>("FuncionarioId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("NomeServico")
                         .IsRequired()

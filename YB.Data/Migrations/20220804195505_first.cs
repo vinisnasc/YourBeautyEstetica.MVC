@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace YourBeautyEstetica.MVC.Data.Migrations
+namespace YB.Data.Migrations
 {
     public partial class first : Migration
     {
@@ -14,9 +14,9 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Telefone = table.Column<string>(type: "varchar(100)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,9 +28,10 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefone = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nome = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Email = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Telefone = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,10 +43,11 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    NomeServico = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NomeServico = table.Column<string>(type: "varchar(100)", nullable: false),
                     FuncionarioId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TempoNecessario = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Valor = table.Column<double>(type: "float", nullable: false)
+                    TempoNecessario = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Valor = table.Column<double>(type: "float", nullable: false),
+                    Imagem = table.Column<string>(type: "varchar(100)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,8 +56,7 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                         name: "FK_Servicos_Funcionarios_FuncionarioId",
                         column: x => x.FuncionarioId,
                         principalTable: "Funcionarios",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -65,8 +66,8 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClienteId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ServicoId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Data = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Horario = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Data = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Horario = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -75,14 +76,12 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                         name: "FK_Agendamentos_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Agendamentos_Servicos_ServicoId",
                         column: x => x.ServicoId,
                         principalTable: "Servicos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(

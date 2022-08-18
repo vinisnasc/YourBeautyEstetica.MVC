@@ -1,5 +1,6 @@
 ﻿#nullable disable
 
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
@@ -10,6 +11,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
 using YB.Domain.Interfaces.Services;
+using YB.Domain.Models;
 using YourBeautyEstetica.MVC.Models;
 
 namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
@@ -23,6 +25,7 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly IClienteService _clienteService;
+        private readonly IMapper _mapper;
 
         public RegisterModel(
             UserManager<IdentityUser> userManager,
@@ -30,7 +33,8 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
             SignInManager<IdentityUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            IClienteService clienteService)
+            IClienteService clienteService,
+            IMapper mapper)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -39,6 +43,7 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _clienteService = clienteService;
+            _mapper = mapper;
         }
 
         [BindProperty]
@@ -48,6 +53,10 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
 
         public class InputModel
         {
+            [Required]            
+            [Display(Name = "Nome de usuário")]
+            public string Nome { get; set; }
+
             [Required]
             [EmailAddress]
             [Display(Name = "Email")]
@@ -64,7 +73,7 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
 
-            public string Telefone { get; set; }
+            public string PhoneNumber { get; set; }
         }
 
 
@@ -82,7 +91,8 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
             {
                 var user = CreateUser();
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
+                user.PhoneNumber = Input.PhoneNumber;
+                await _userStore.SetUserNameAsync(user, Input.Nome, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
@@ -90,10 +100,11 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
                 {
                     ClienteDTO dto = new ClienteDTO();
                     dto.Email = user.Email;
-                    dto.Nome = user.Email;
+                    dto.Nome = Input.Nome;
                     dto.Telefone = user.PhoneNumber;
-
-                    // TODO: Ao registrar um cliente, criar o cliente no BD
+                    await _clienteService.CadastrarCliente(_mapper.Map<Cliente>(dto));
+                    _userManager.AddToRoleAsync(user, "Cliente").GetAwaiter().GetResult();
+                    
                     _logger.LogInformation("User created a new account with password.");
 
                     var userId = await _userManager.GetUserIdAsync(user);
@@ -123,8 +134,6 @@ namespace YourBeautyEstetica.MVC.Areas.Identity.Pages.Account
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
-            // If we got this far, something failed, redisplay form
             return Page();
         }
 

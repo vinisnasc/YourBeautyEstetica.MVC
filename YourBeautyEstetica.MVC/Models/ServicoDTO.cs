@@ -6,6 +6,8 @@
         public Guid FuncionarioId { get; set; }
         public DateTime TempoNecessario { get; set; }
         public double Valor { get; set; }
+        public string Imagem { get; set; }
+        public IFormFile ImagemUpload { get; set; }
 
         public IEnumerable<AgendamentoDTO> Agendamentos { get; set; }
         public FuncionarioDTO Funcionario { get; set; }

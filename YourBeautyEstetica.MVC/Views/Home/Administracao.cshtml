@@ -1,0 +1,36 @@
+﻿@model AdministracaoSimplesModel
+
+@{
+    ViewData["Title"] = "Administração";
+}
+
+<div class="container" style="background-color:white;">
+<h1>Administracao</h1>
+
+<br />
+<h4>Meus Dados</h4>
+<form asp-controller="Funcionarios" asp-action="Atualizar">
+<div class="col-2">
+    <label asp-for="Funcionario.Nome" class="control-label pt-2" style="font-size=20px;"></label>
+</div>
+<div class="col-10 pb-3">
+    <input asp-for="Funcionario.Nome" class="form-control" />
+    <span asp-validation-for="Funcionario.Nome" class="text-danger"></span>
+</div>
+</form>
+
+<br />
+<h4>Meus Serviços</h4>
+<a asp-action="CadastrarServico" data-modal="" class="btn btn-info"><span title="Cadastrar"></span></a>
+@if (Model.Funcionario.Servicos.Count() == 0)
+{
+    <br />
+    <h5><span class="text-danger">Não há serviços cadastrados!</span></h5>
+}
+</div>
+
+<script>
+    $(document).ready(function(){
+        AjaxModal();
+    });
+</script>

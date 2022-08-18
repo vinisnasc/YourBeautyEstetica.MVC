@@ -11,11 +11,6 @@ namespace YourBeautyEstetica.MVC.Data
         {
         }
 
-        public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Funcionario> Funcionarios { get; set; }
-        public DbSet<Servico> Servicos { get; set; }
-        public DbSet<Agendamento> Agendamentos { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

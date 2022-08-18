@@ -5,13 +5,13 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YourBeautyEstetica.MVC", "YourBeautyEstetica.MVC\YourBeautyEstetica.MVC.csproj", "{06880B86-DDBE-4024-BBAB-F3247FA62431}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YB.Data", "YB.Data\YB.Data.csproj", "{277B3536-076C-42BB-AAE4-5A560ABC5814}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YB.Data", "YB.Data\YB.Data.csproj", "{277B3536-076C-42BB-AAE4-5A560ABC5814}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YB.Domain", "YB.Domain\YB.Domain.csproj", "{FBB92593-BCD3-4029-8CDB-F9BD8465B5DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YB.Domain", "YB.Domain\YB.Domain.csproj", "{FBB92593-BCD3-4029-8CDB-F9BD8465B5DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YB.Services", "YB.Services\YB.Services.csproj", "{6C60ABDD-8828-4B32-A20F-9940F768D3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YB.Services", "YB.Services\YB.Services.csproj", "{6C60ABDD-8828-4B32-A20F-9940F768D3F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YB.CrossCutting", "YB.CrossCutting\YB.CrossCutting.csproj", "{F33995DE-1154-449C-9AB5-A95373E3B057}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YB.CrossCutting", "YB.CrossCutting\YB.CrossCutting.csproj", "{F33995DE-1154-449C-9AB5-A95373E3B057}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

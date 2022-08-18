@@ -1,4 +1,5 @@
-﻿using YB.Domain.Models;
+﻿using System.Linq.Expressions;
+using YB.Domain.Models;
 
 namespace YB.Domain.Interfaces.Repository
 {
@@ -8,6 +9,7 @@ namespace YB.Domain.Interfaces.Repository
         Task Alterar(T entity);
         Task<T> SelecionarPorId(Guid id);
         Task<List<T>> SelecionarTudo();
+        Task<IEnumerable<T>> Buscar(Expression<Func<T, bool>> predicate);
         Task<int> SaveChanges();
     }
 }

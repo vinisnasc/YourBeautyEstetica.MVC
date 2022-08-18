@@ -5,6 +5,7 @@ using YB.Data;
 using YB.Data.Repository;
 using YB.Domain.Interfaces.Repository;
 using YB.Domain.Interfaces.Services;
+using YB.Domain.Notificacoes;
 using YB.Services;
 
 namespace YB.CrossCutting.DependencyInjection
@@ -24,13 +25,13 @@ namespace YB.CrossCutting.DependencyInjection
             services.AddScoped<IClienteService, ClienteService>();
             services.AddScoped<IAgendamentoService, AgendamentoService>();
             services.AddScoped<IServicoService, ServicoService>();
+            services.AddScoped<INotificador, Notificador>();
 
             // Repositorios
             services.AddScoped<IFuncionarioRepository, FuncionarioRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IAgendamentoRepository, AgendamentoRepository>();
             services.AddScoped<IServicoRepository, ServicoRepository>();
-            //services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
             // UnitOfWork
             services.AddScoped<IUnitOfWork, UnitOfWork>();

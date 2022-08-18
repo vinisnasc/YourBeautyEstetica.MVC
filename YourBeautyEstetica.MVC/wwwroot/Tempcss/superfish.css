@@ -1,0 +1,110 @@
+.menu-border-bot{
+	background:url(../images/menu-border-bot.gif) center bottom repeat-x;
+	padding-bottom:16px;
+}
+	#page1 .menu-border-bot{}
+nav{
+	position: relative;
+	background:url(../images/menu-border-top.gif) center top repeat-x;
+	padding-top:18px;
+	text-align:center;
+}
+#menu-icon{
+	display:none;
+	font:15px/20px Georgia, "Times New Roman", Times, serif;
+	color:#fff;
+	padding:1px 12px 4px;
+	background:#db5e77;
+	cursor:pointer;
+}
+	#menu-icon span{
+		display:inline-block;
+		width:7px;
+		height:4px;
+		overflow:hidden;
+		background:url(../images/menu-arrow.gif) center top no-repeat;
+		margin-left:2px;
+		vertical-align:middle;
+	}
+.menu {font-size:0; line-height:0; word-spacing:-4px;}
+.menu > li {
+	display:inline-block;
+	position:relative;
+	font:15px/20px Georgia, "Times New Roman", Times, serif;
+	margin-right:30px;
+}
+	.menu > li > a {
+		display:block;
+		color:#fff;
+		text-decoration:none;
+		padding:1px 12px 4px;
+	}
+		.menu > li.sfHover > a,.menu > li > a:hover , .menu > li.current > a {text-decoration:none; background-color:#db5e77;}
+	.menu .menu-arrow{display:none;}
+/***submenu***/
+.menu ul {
+	position:absolute;
+	top:-999em;
+	width:161px; 
+	display:none;
+	padding:5px 9px 6px;
+	background:#fff;
+	z-index:999;
+	box-shadow:0 0 0 1px rgba(0,0,0,.16);
+	-webkit-box-shadow:0 0 0 1px rgba(0,0,0,.16);
+}
+.menu li li{
+	width:100%;
+	padding-bottom:7px;
+	margin-bottom:4px;
+	position:relative;
+	font:12px/20px Arial, Helvetica, sans-serif;
+	text-align:left;
+	background:url(../images/submenu-separator.gif) 0 bottom repeat-x;
+}
+	.menu li li.last-item{padding-bottom:0; background:none;}
+	.menu li li a{
+		color:#a3a3a3;
+		text-decoration:none;
+	}
+		.menu li li > a:hover,.menu li li.sfHover > a{
+			color:#db5e77;
+			text-decoration:none;
+		}
+.menu li:hover ul, .menu li.sfHover ul {left:-1px; top:33px;}
+.menu li:hover li ul, .menu li.sfHover li ul {top:-999em;}
+/***subsubmenu***/
+.menu ul ul{background:#f0f0f0;}
+	.menu ul ul li a{color:#999;}
+.menu li li:hover ul, .menu li li.sfHover ul {left:174px; top:-5px;}
+.menu li li:hover li ul, .menu li li.sfHover li ul {top:-999em;}
+
+@media only screen and (max-width: 995px){
+	.menu > li > a .menu-arrow{display:inline-block; width:7px; height:4px; overflow:hidden; text-indent:-999em; font-size:0; line-height:0; background:url(../images/menu-arrow.gif) center top no-repeat; margin-left:4px; vertical-align:middle;}
+	.menu ul .menu-arrow{display:inline-block; margin-left:3px;}
+}
+
+@media only screen and (max-width: 767px) {
+	#menu-icon{display:inline-block;}
+	/*menu*/
+	.menu{display:none; position:absolute; top:53px; left:172px; width:161px; padding:5px 9px 6px; background:#fff; z-index:999; font-size:inherit; line-height:inherit; word-spacing:inherit;box-shadow:0 0 0 1px rgba(0,0,0,.16); -webkit-box-shadow:0 0 0 1px rgba(0,0,0,.16);}
+	.menu > li {display:block; width:100%; padding-bottom:7px; margin-right:0; margin-bottom:4px; font:12px/20px Arial, Helvetica, sans-serif; text-align:left; background:url(../images/submenu-separator.gif) 0 bottom repeat-x;}
+		.menu > li.last-item{padding-bottom:0; background:none;}
+	.menu > li > a {display:inline; color:#a3a3a3; padding:0;}
+		.menu > li.sfHover > a,.menu > li > a:hover, .menu > li.current > a {background-color:transparent; color:#db5e77;}
+	.menu > li > a .menu-arrow{width:auto; height:auto; text-indent:0; font-size:inherit; line-height:inherit; background:none; margin-left:3px; vertical-align: inherit;}
+	/***submenu***/
+	.menu ul {right:172px; left:auto !important; top:-5px !important; background:#f0f0f0; width:150px;}
+		.menu li li a{color:#999;}
+	/***submenu***/
+	.menu ul ul {position:static; padding:10px 0 0; box-shadow:none; -webkit-box-shadow:none; background:url(../images/submenu-separator.gif) 0 5px repeat-x;}
+		.menu ul ul li{padding-left:20px; width:auto;}
+}
+
+@media only screen and (max-width: 479px){
+	.menu{left:113px; width:112px;}
+	.menu ul {right:123px; width:100px;}
+	.menu ul ul li{padding-left:10px;}
+}
+
+@media only screen and (min-width: 768px) {.menu {display:block !important;}}

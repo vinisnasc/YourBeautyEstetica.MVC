@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using YourBeautyEstetica.MVC.Data;
 
 #nullable disable
 
-namespace YourBeautyEstetica.MVC.Data.Migrations
+namespace YourBeautyEstetica.MVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220804195408_firstIdentity")]
+    partial class firstIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -224,98 +226,6 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Agendamento", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ClienteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Data")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("Horario")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ServicoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("ServicoId");
-
-                    b.ToTable("Agendamentos");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Cliente", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Clientes");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Funcionario", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Funcionarios");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Servico", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("FuncionarioId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("NomeServico")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("TempoNecessario")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Valor")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FuncionarioId");
-
-                    b.ToTable("Servicos");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -365,51 +275,6 @@ namespace YourBeautyEstetica.MVC.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Agendamento", b =>
-                {
-                    b.HasOne("YourBeautyEstetica.MVC.Models.Cliente", "Cliente")
-                        .WithMany("Agendamentos")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("YourBeautyEstetica.MVC.Models.Servico", "Servico")
-                        .WithMany("Agendamentos")
-                        .HasForeignKey("ServicoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-
-                    b.Navigation("Servico");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Servico", b =>
-                {
-                    b.HasOne("YourBeautyEstetica.MVC.Models.Funcionario", "Funcionario")
-                        .WithMany("Servicos")
-                        .HasForeignKey("FuncionarioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Funcionario");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Cliente", b =>
-                {
-                    b.Navigation("Agendamentos");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Funcionario", b =>
-                {
-                    b.Navigation("Servicos");
-                });
-
-            modelBuilder.Entity("YourBeautyEstetica.MVC.Models.Servico", b =>
-                {
-                    b.Navigation("Agendamentos");
                 });
 #pragma warning restore 612, 618
         }

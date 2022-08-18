@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "ERRO!";
+}
+
+<div class="modal-header">
+    <h4 class="modal-title">@ViewData["Title"]</h4>
+    <button type="button" class="close" data-dismiss="modal">
+        <span aria-hidden="true">×</span><span class="sr-only">Fechar</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <h1>O funcionário que voce está tentando permissionar já obtem essa permissão!</h1>
+    <div class="col-md-offset-2 col-md-10">
+        <input type="button" class="btn-primary btn-info" value="Fechar" data-dismiss="modal" />
+    </div>
+</div>
+
+<script>
+    SetModal();
+</script>

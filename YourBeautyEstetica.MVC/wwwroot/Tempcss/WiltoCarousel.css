@@ -1,0 +1,37 @@
+.slidewrap, .slider{overflow:hidden; position:relative;}
+	.slider li{overflow:hidden; width:428px !important;}
+
+.carousel-tabs{
+	float:right;
+	overflow:hidden;
+	margin-left:16px;
+	padding-top:27px;
+}
+	.carousel-tabs li{
+		float:left;
+		font-size:0;
+		line-height:0;
+		text-indent:-100%;
+		margin-left:4px;
+	}
+		.carousel-tabs li:first-child{margin-left:0;}
+		.carousel-tabs a{
+			display:block;
+			width:12px;
+			height:12px;
+			overflow:hidden;
+			background:#f17e95;
+		}
+			.carousel-tabs a:hover, .carousel-tabs .carousel-active-tab a{background-color:#000;}
+			.carousel-tabs .carousel-active-tab a{cursor:default;}
+
+@media only screen and (max-width: 995px) {
+	.slider li{width:364px !important;}
+}
+@media only screen and (max-width: 767px) {
+	.slider li{width:420px !important;}
+}
+
+@media only screen and (max-width: 479px) {
+	.slider li{width:300px !important;}
+}

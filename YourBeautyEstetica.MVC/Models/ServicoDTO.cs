@@ -4,7 +4,7 @@
     {
         public string NomeServico { get; set; }
         public Guid FuncionarioId { get; set; }
-        public DateTime TempoNecessario { get; set; }
+        public TimeOnly TempoNecessario { get; set; }
         public double Valor { get; set; }
         public string Imagem { get; set; }
         public IFormFile ImagemUpload { get; set; }

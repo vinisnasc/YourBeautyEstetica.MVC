@@ -3,34 +3,43 @@
 @{
     ViewData["Title"] = "Administração";
 }
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 
 <div class="container" style="background-color:white;">
-<h1>Administracao</h1>
+    <h1>Administracao</h1>
 
-<br />
-<h4>Meus Dados</h4>
-<form asp-controller="Funcionarios" asp-action="Atualizar">
-<div class="col-2">
-    <label asp-for="Funcionario.Nome" class="control-label pt-2" style="font-size=20px;"></label>
-</div>
-<div class="col-10 pb-3">
-    <input asp-for="Funcionario.Nome" class="form-control" />
-    <span asp-validation-for="Funcionario.Nome" class="text-danger"></span>
-</div>
-</form>
-
-<br />
-<h4>Meus Serviços</h4>
-<a asp-action="CadastrarServico" data-modal="" class="btn btn-info"><span title="Cadastrar"></span></a>
-@if (Model.Funcionario.Servicos.Count() == 0)
-{
     <br />
-    <h5><span class="text-danger">Não há serviços cadastrados!</span></h5>
-}
+    <h4>Meus Dados</h4>
+    <form asp-controller="Funcionarios" asp-action="Atualizar">
+        <div class="col-2">
+            <label asp-for="Funcionario.Nome" class="control-label pt-2" style="font-size=20px;"></label>
+        </div>
+        <div class="col-10 pb-3">
+            <input asp-for="Funcionario.Nome" class="form-control" />
+            <span asp-validation-for="Funcionario.Nome" class="text-danger"></span>
+        </div>
+    </form>
+
+    <br />
+    <h4>Meus Serviços</h4>
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#CadastroServicoModal">
+        Cadastrar Serviço
+    </button>
+    @if (Model.Funcionario.Servicos.Count() == 0)
+    {
+        <br />
+        <h5><span class="text-danger">Não há serviços cadastrados!</span></h5>
+    }
 </div>
 
-<script>
-    $(document).ready(function(){
-        AjaxModal();
-    });
-</script>
+<partial name="../Servicos/_CadastrarServico" />
+
+@section Scripts{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

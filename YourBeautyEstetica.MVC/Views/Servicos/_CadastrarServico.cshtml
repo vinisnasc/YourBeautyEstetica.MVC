@@ -1,0 +1,64 @@
+﻿@model AdministracaoSimplesModel
+
+@{
+    ViewData["Title"] = "Cadastrar Serviço";
+}
+
+<div class="modal fade" id="CadastroServicoModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">@ViewData["Title"]</h4>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">x</span><span class="sr-only">Fechar</span>
+                </button>
+            </div>
+
+            <form asp-controller="Servicos" asp-action="CadastrarServico">
+                <div class="modal-body">
+
+                    <div class="col-2">
+                        <label asp-for="Servico.NomeServico" class="control-label pt-2" style="font-size=20px;"></label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="Servico.NomeServico" class="form-control" />
+                        <span asp-validation-for="Servico.NomeServico" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-2">
+                        <label asp-for="Servico.TempoNecessario" class="control-label pt-2" style="font-size=20px;"></label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="Servico.TempoNecessario" class="form-control" />
+                        <span asp-validation-for="Servico.TempoNecessario" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-2">
+                        <label asp-for="Servico.Valor" class="control-label pt-2" style="font-size=20px;"></label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="Servico.Valor" class="form-control" />
+                        <span asp-validation-for="Servico.Valor" class="text-danger"></span>
+                    </div>
+
+                     <div class="col-2">
+                        <label asp-for="Servico.Imagem" class="control-label pt-2" style="font-size=20px;"></label>
+                    </div>
+                    <div class="col-10 pb-3">
+                        <input asp-for="Servico.Imagem" class="form-control" />
+                        <span asp-validation-for="Servico.Imagem" class="text-danger"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Cadastrar" class="btn btn-success" />
+                            <input type="button" class="btn btn-info" value="Fechar" data-dismiss="modal" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -11,7 +11,8 @@ namespace YourBeautyEstetica.MVC.Configs.AutoMapperConfig
             CreateMap<Cliente, ClienteDTO>().ReverseMap();
             CreateMap<Funcionario, FuncionarioDTO>().ReverseMap();
             CreateMap<Agendamento, AgendamentoDTO>().ReverseMap();
-            CreateMap<Servico, ServicoDTO>().ReverseMap();
+            CreateMap<Servico, ServicoDTO>().ReverseMap()
+                .ForMember(d => d.TempoNecessario, opt => opt.MapFrom(src => src.TempoNecessario.ToString()));
         }
     }
 }
